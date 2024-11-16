@@ -329,7 +329,7 @@ return {
     })
   ),
   s(
-    { trig = "(.)ira", regTrig = true, wordTrig = false },
+    { trig = "(.)iar", regTrig = true, wordTrig = false },
     fmta("<>\\rightarrowtail\\mathrel{\\mspace{-15mu}}\\twoheadrightarrow", {
 
       f(function(_, snip)
@@ -338,7 +338,7 @@ return {
     })
   ),
   s(
-    { trig = "(.)ila", regTrig = true, wordTrig = false },
+    { trig = "(.)ial", regTrig = true, wordTrig = false },
     fmta("<>\\twoheadleftarrow\\mathrel{\\mspace{-15mu}}\\leftarrowtail", {
       f(function(_, snip)
         return snip.captures[1]

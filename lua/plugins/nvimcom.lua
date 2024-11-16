@@ -1,5 +1,0 @@
-return {
-  {
-    "jalvesaq/nvimcom",
-  },
-}

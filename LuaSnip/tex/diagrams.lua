@@ -240,6 +240,7 @@ return {
       confounding/.style = {rectangle, thick, text centered, draw, text width = 6em, minimum width = 5.5in},
       outcome/.style = {rectangle, thick, draw, text centered, minimum height = 3.5in, text width = 6em},
        ]
+
       \node(T) at (0,1){<>};
 			\node(BL) at (-2,-1){<>};
 			\node(BR) at (2,-1){<>};
@@ -485,11 +486,11 @@ return {
 			\node(BR) at (0,-3){<>};
 
 			\draw[Arrow](TL)--node[midway, above] {<>}(TR);
-			\draw[Arrow](BL)--node[midway, right] {<>}(BR);
+			\draw[Arrow, dashed](BL)--node[midway, right] {<>}(BR);
 			\draw[Arrow](TL)--node[midway, right] {<>}(BL);
 			\draw[Arrow](TR)--node[midway, left] {<>}(BL);
-			\draw[Arrow](TL)to[out = 250, in = 150, edge node={node[midway, left] {<>}}](BR); % To use in/out, imagine a circle around the node. The angles are with respect to the node as the center.
-			\draw[Arrow](TR)to[out = 300, in = 30, edge node={node[midway, right] {<>}}](BR);
+			\draw[Arrow, -stealth](TL)to[out = 250, in = 150, edge node={node[midway, left] {<>}}](BR); % To use in/out, imagine a circle around the node. The angles are with respect to the node as the center.
+			\draw[Arrow, -stealth](TR)to[out = 300, in = 30, edge node={node[midway, right] {<>}}](BR);
 		\end{tikzpicture}
   ]],
       {
@@ -526,8 +527,8 @@ return {
 			\draw[Arrow, dashed](BR)--node[midway, right] {<>}(BL);
 			\draw[Arrow](BL)--node[midway, right] {<>}(TL);
 			\draw[Arrow](BL)--node[midway, left] {<>}(TR);
-			\draw[Arrow](BR)to[out = 200, in = 130, edge node={node[midway, left] {<>}}](TL); % To use in/out, imagine a circle around the node. The angles are with respect to the node as the center.
-			\draw[Arrow](BR)to[out = 340, in = 60, edge node={node[midway, right] {<>}}](TR);
+			\draw[Arrow, -stealth](BR)to[out = 200, in = 130, edge node={node[midway, left] {<>}}](TL); % To use in/out, imagine a circle around the node. The angles are with respect to the node as the center.
+			\draw[Arrow, -stealth](BR)to[out = 340, in = 60, edge node={node[midway, right] {<>}}](TR);
 		\end{tikzpicture}
   ]],
       {

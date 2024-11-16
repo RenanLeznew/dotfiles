@@ -166,7 +166,7 @@ return {
       \documentclass[<>]{subfiles}
       \begin{document}
       \section{<> - <>, 2024}
-      \subsection{Motivations}
+      \subsection{Motivações}
       \begin{itemize}
 	      \item <>
       \end{itemize}
