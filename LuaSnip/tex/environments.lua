@@ -110,13 +110,13 @@ return {
   ),
   s(
     {
-      trig = "([.])oof",
+      trig = "(.)oof",
       wordTrig = false,
       regTrig = true,
     },
     fmta(
       [[
-      <><>\circ<>\circ\cdots\circ<><>
+      <><>\circ <>\circ\cdots\circ <><>
       ]],
       {
         f(function(_, snip)
@@ -131,13 +131,13 @@ return {
   ),
   s(
     {
-      trig = "([.])onf",
+      trig = "(.)onf",
       wordTrig = false,
       regTrig = true,
     },
     fmta(
       [[
-      <>\underline{<>\circ<>\circ\cdots\circ<>}_{<>\text{-vezes}}<>
+      <>\underline{<>\circ <>\circ\cdots\circ <>}_{<>\text{-vezes}}<>
       ]],
       {
         f(function(_, snip)
@@ -326,6 +326,34 @@ return {
     }
   ),
   s(
+    { trig = "btbl", regTrig = true, wordTrig = false },
+    fmta(
+      [[
+    \begin{table}[<>]
+    \centering
+    \resizebox{\textwidth}{!}{
+      \begin{tabular}{<>}
+        <>
+        <>
+        <>
+      \end{tabular}}
+    \caption{<>}
+    \end{table}
+    ]],
+      {
+        i(1, "placement"),
+        i(2, "c | c | c | to add separations"),
+        i(3, "multicolumn if you want to merge columns to make a title"),
+        i(4, "hline if you want to separate by a line"),
+        i(5, "caption"),
+        i(6),
+      }
+    ),
+    {
+      condition = line_begin,
+    }
+  ),
+  s(
     { trig = "plt" },
     fmta(
       [[
@@ -376,6 +404,25 @@ return {
     )
   ),
 
+  s(
+    { trig = "(.)img", wordTrig = false, regTrig = true },
+    fmta(
+      [[
+  \begin{figure}[H]
+  \begin{center}
+  \includegraphics[height=\textheight, width=\textwidth, keepaspectratio]{<>}
+  \end{center}
+  \caption{<>}
+  \label{<>}
+  \end{figure}
+  ]],
+      {
+        i(1),
+        i(2),
+        i(3),
+      }
+    )
+  ),
   s({ trig = "gg", regTrig = true, wordTrig = false }, t("\\qedsymbol")),
   s({ trig = "ggc", regTrig = true, wordTrig = false }, t("\\blacktriangle")),
 
@@ -587,12 +634,43 @@ return {
       }
     )
   ),
+  s(
+    { trig = "ovb" },
+    fmta(
+      [[
+    <>\overbrace{<>}^{<>}
+  ]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+        d(1, get_visual),
+        i(2),
+      }
+    )
+  ),
 
   s(
     { trig = "unb" },
     fmta(
       [[
     <>\underbrace{<>}_{<>}
+  ]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+        d(1, get_visual),
+        i(2),
+      }
+    )
+  ),
+
+  s(
+    { trig = "stk" },
+    fmta(
+      [[
+    <>\substack{<> \\ <>}
   ]],
       {
         f(function(_, snip)

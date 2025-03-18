@@ -111,7 +111,6 @@ return {
     })
   ),
 
-  --SuperIndex
   s(
     { trig = "(.)puw", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
     fmta("<>_{<>}^{<>}", {
@@ -165,7 +164,7 @@ return {
       [[ 
       \documentclass[<>]{subfiles}
       \begin{document}
-      \section{<> - <>, 2024}
+      \section{<> - <>, 2025}
       \subsection{Motivações}
       \begin{itemize}
 	      \item <>
@@ -188,7 +187,7 @@ return {
   s(
     { trig = "pamble" },
     fmta(
-      [[\documentclass{article}
+      [[\documentclass[12pt]{article}
  \usepackage{bookmark}
  \usepackage{amsmath}
  \usepackage{amsthm}
@@ -197,8 +196,9 @@ return {
  \usepackage{pgfplots}
  \usepackage[utf8]{inputenc}
  \usepackage{amsfonts}
- \usepackage[margin=2.5cm]{geometry}
+ \usepackage{geometry}
  \usepackage{graphicx}
+ \usepackage{graphics}
  \usepackage[export]{adjustbox}
  \usepackage{fancyhdr}
  \usepackage[portuguese]{babel}
@@ -208,6 +208,9 @@ return {
  \usepackage{mathtools}
  \usepackage{newtxsf}
  \usepackage{subfiles}
+ \usepackage{flafter}
+ \usepackage{float}
+ \usepackage{accents}
  \usepackage[T1]{fontenc}
  \setcounter{section}{-1}
 
@@ -223,17 +226,20 @@ return {
      linkcolor=black,
      urlcolor=black
  }
- \newtheorem*{def*}{\underline{Definição}}
  \newtheorem*{theorem*}{\underline{Teorema}}
  \newtheorem*{lemma*}{\underline{Lema}}
  \newtheorem*{prop*}{\underline{Proposição}}
- \newtheorem{example}{\underline{Exemplo}}
- \newtheorem*{proof*}{\underline{Prova}}
  \newtheorem*{crl*}{\underline{Corolário}}
+ \theoremstyle{definition}
+ \newtheorem{example}{\underline{Exemplo}}
+ \newtheorem*{def*}{\underline{Definição}}
+ \newtheorem*{proof*}{\underline{Prova}}
  \newtheorem{exr}{\underline{Exercício}}
  \renewcommand\qedsymbol{$\blacksquare$}
 
  \rfoot{Página \thepage \hspace{1pt} de \pageref{LastPage}}
+
+ \geometry{a4paper, left=3cm, top=3cm, right=3cm, bottom=3cm}
 
  \begin{document}
  \begin{figure}[ht]
@@ -272,8 +278,7 @@ return {
 \end{center}
 
  \newpage
-\textbf{{\Huge Disclaimer}}
- \vspace{5cm}
+\textbf{{\Huge Avisos}}
 
   {\huge Essas notas não possuem relação com professor algum. 
 
@@ -281,12 +286,20 @@ return {
 
 Caso julgue necessário, contatar: 
 
-renan.wenzel.rw@gmail.com}
+renan.wenzel.rw@gmail.com. 
+
+Além disso, alguns textos em itálicos são clicáveis - normalmente, afim de facilitar o encontro de um resultado, definição ou uma continuação.
+}
+
  \tableofcontents
 
  \newpage
 
  <>
+
+ \begin{thebibliography}{99}
+
+ \end{thebibliography}
 
  \end{document}
   ]],
@@ -350,6 +363,16 @@ renan.wenzel.rw@gmail.com}
         return snip.captures[1]
       end),
       d(1, get_visual),
+    })
+  ),
+
+  s(
+    { trig = "(.)url", regTrig = true, wordTrig = false },
+    fmta([[<>\url{<>}]], {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+      i(1),
     })
   ),
 
@@ -484,6 +507,18 @@ renan.wenzel.rw@gmail.com}
   ),
 
   s(
+    { trig = "(.)lef", regTrig = true, wordTrig = false },
+    fmta([[<>\lim_{<>\to <>^{-}}<>]], {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+      i(1),
+      i(2),
+      i(0),
+    })
+  ),
+
+  s(
     { trig = "(.)upt", regTrig = true, wordTrig = false },
     fmta([[<>\uparrow ]], {
       f(function(_, snip)
@@ -507,18 +542,6 @@ renan.wenzel.rw@gmail.com}
       f(function(_, snip)
         return snip.captures[1]
       end),
-    })
-  ),
-
-  s(
-    { trig = "(.)lef", regTrig = true, wordTrig = false },
-    fmta([[<>\lim_{<>\to <>^{-}}<>]], {
-      f(function(_, snip)
-        return snip.captures[1]
-      end),
-      i(1),
-      i(2),
-      i(0),
     })
   ),
 

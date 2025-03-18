@@ -204,10 +204,10 @@ return {
       confounding/.style = {rectangle, thick, text centered, draw, text width = 6em, minimum width = 5.5in},
       outcome/.style = {rectangle, thick, draw, text centered, minimum height = 3.5in, text width = 6em},
        ]
-      \node(TL) at (-2,1){<>};
-			\node(BL) at (-2,-1){<>};
-			\node(TR) at (2,1){<>};
-			\node(BR) at (2,-1){<>};
+      \node(TL) at (-1,1){<>};
+			\node(BL) at (-1,-1){<>};
+			\node(TR) at (1,1){<>};
+			\node(BR) at (1,-1){<>};
 
 			\draw[Arrow](TL)--node[midway, above] {<>}(TR);
 			\draw[Arrow](BL)--node[midway, below] {<>}(BR);
@@ -229,6 +229,7 @@ return {
       }
     )
   ),
+
   s(
     { trig = "(.)triplet", regTrig = true, wordTrig = false },
     fmta(
@@ -262,6 +263,7 @@ return {
       }
     )
   ),
+
   s(
     { trig = "(.)prods", regTrig = true, wordTrig = false },
     fmta(

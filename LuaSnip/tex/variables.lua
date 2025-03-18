@@ -128,4 +128,24 @@ return {
       t("j"),
     })
   ),
+
+  s(
+    { trig = "([%a%)%]%}])55", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+    fmta("<>_{<>}", {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+      t("m"),
+    })
+  ),
+
+  s(
+    { trig = "([%a%)%]%}])66", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+    fmta("<>_{<>}", {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+      t("\\ell"),
+    })
+  ),
 }

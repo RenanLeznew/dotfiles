@@ -63,6 +63,38 @@ return {
     )
   ),
   s(
+    { trig = "([^%a])inu", regTrig = true, wordTrig = false },
+    fmta(
+      [[
+         <>\overline{\intup_{<>}^{<>}}<>
+        ]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+        i(1),
+        i(2),
+        i(0),
+      }
+    )
+  ),
+  s(
+    { trig = "([^%a])inl", regTrig = true, wordTrig = false },
+    fmta(
+      [[
+         <>\underline{\intup_{<>}^{<>}}<>
+        ]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+        i(1),
+        i(2),
+        i(0),
+      }
+    )
+  ),
+  s(
     { trig = "([^%a])iin", regTrig = true, wordTrig = false },
     fmta(
       [[
@@ -183,7 +215,7 @@ return {
     )
   ),
   s(
-    { trig = "([^%a])ppw", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+    { trig = "([^%a])dvp", regTrig = true, wordTrig = false },
     fmta(
       [[
       <>\frac{\partial^{<>}<>}{\partial <>^{<>}}
@@ -203,7 +235,7 @@ return {
     { trig = "([^%a])dp", regTrig = true, wordTrig = false },
     fmta(
       [[
-      <>\partial^{<>}_{<>}
+      <>\partial_{<>}^{<>}
     ]],
       {
         f(function(_, snip)
@@ -829,6 +861,20 @@ return {
     fmta(
       [[
       <>\vee 
+    ]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+      }
+    )
+  ),
+
+  s(
+    { trig = "(.)del", regTrig = true, wordTrig = false },
+    fmta(
+      [[
+      <>\nabla 
     ]],
       {
         f(function(_, snip)
