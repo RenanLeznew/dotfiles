@@ -51,7 +51,7 @@ return {
     { trig = "([^%a])int", regTrig = true, wordTrig = false },
     fmta(
       [[
-         <>\int_{<>}^{<>}
+         <>\int_{<>}^{<>}<> \mathrm{d<>}<>
         ]],
       {
         f(function(_, snip)
@@ -59,6 +59,9 @@ return {
         end),
         i(1),
         i(2),
+        i(3),
+        i(4),
+        i(0),
       }
     )
   ),
@@ -66,7 +69,7 @@ return {
     { trig = "([^%a])inu", regTrig = true, wordTrig = false },
     fmta(
       [[
-         <>\overline{\intup_{<>}^{<>}}<>
+         <>\overline{\intup_{<>}^{<>}}<>\mathrm{d<>}
         ]],
       {
         f(function(_, snip)
@@ -74,6 +77,7 @@ return {
         end),
         i(1),
         i(2),
+        i(3),
         i(0),
       }
     )
@@ -82,7 +86,7 @@ return {
     { trig = "([^%a])inl", regTrig = true, wordTrig = false },
     fmta(
       [[
-         <>\underline{\intup_{<>}^{<>}}<>
+         <>\underline{\intup_{<>}^{<>}}<>\mathrm{d<>}
         ]],
       {
         f(function(_, snip)
@@ -90,6 +94,7 @@ return {
         end),
         i(1),
         i(2),
+        i(3),
         i(0),
       }
     )
@@ -156,7 +161,7 @@ return {
     { trig = "([^%a])lnt", regTrig = true, wordTrig = false },
     fmta(
       [[
-      <>\int_{<>}<> dm
+      <>\int_{<>}<> \mathrm{dm}
     ]],
       {
         f(function(_, snip)
@@ -171,7 +176,7 @@ return {
     { trig = "([^%a])dv", regTrig = true, wordTrig = false },
     fmta(
       [[
-     <>\frac{d<>}{d<>}
+     <>\frac{\mathrm{d}<>}{\mathrm{d}<>}
     ]],
       {
         f(function(_, snip)
@@ -186,7 +191,7 @@ return {
     { trig = "([^%a])dvw", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
     fmta(
       [[
-     <>\frac{d^{<>}<>}{d<>^{<>}}
+     <>\frac{\mathrm{d}^{<>}<>}{\mathrm{d}<>^{<>}}
     ]],
       {
         f(function(_, snip)
@@ -247,7 +252,7 @@ return {
     )
   ),
   s(
-    { trig = "([^%a])vk", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+    { trig = "([^%a])vk", regTrig = true, wordTrig = false },
     fmta(
       [[
       <>\vec{<>}
@@ -261,7 +266,7 @@ return {
     )
   ),
   s(
-    { trig = "(.)vrs", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+    { trig = "(.)vrs", regTrig = true, wordTrig = false },
     fmta(
       [[
       <>\hat{<>}
@@ -701,7 +706,7 @@ return {
     { trig = "(.)fkr", regTrig = true, wordTrig = false },
     fmta(
       [[
-    <><>|_<>
+    <><>|_{<>}
   ]],
       {
         f(function(_, snip)

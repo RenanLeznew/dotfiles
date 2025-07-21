@@ -79,8 +79,9 @@ return {
       d(1, get_visual),
     })
   ),
+
   s(
-    { trig = "(.)txt", dscr = "Turn selected line into bold text.", regTrig = true, wordTrig = false },
+    { trig = "(.)txt", dscr = "Turn selected line into text.", regTrig = true, wordTrig = false },
     fmta("<>\\text{<>}", {
       f(function(_, snip)
         return snip.captures[1]
@@ -89,6 +90,15 @@ return {
     })
   ),
 
+  s(
+    { trig = "(.)unl", dscr = "Underline selected line.", regTrig = true, wordTrig = false },
+    fmta("<>\\underline{<>}", {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+      d(1, get_visual),
+    })
+  ),
   --Subindex
   s(
     { trig = "(.)__", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
@@ -196,6 +206,8 @@ return {
  \usepackage{pgfplots}
  \usepackage[utf8]{inputenc}
  \usepackage{amsfonts}
+ \usepackage{nicematrix}
+ \usepackage[x11names]{xcolor}
  \usepackage{geometry}
  \usepackage{graphicx}
  \usepackage{graphics}
@@ -206,6 +218,7 @@ return {
  \usepackage{multirow}
  \usepackage{lastpage}
  \usepackage{mathtools}
+ \usepackage[many]{tcolorbox}
  \usepackage{newtxsf}
  \usepackage{subfiles}
  \usepackage{flafter}
@@ -407,6 +420,15 @@ Além disso, alguns textos em itálicos são clicáveis - normalmente, afim de f
     })
   ),
   s(
+    { trig = "(.)Nrm", regTrig = true, wordTrig = false },
+    fmta([[<>\biggl\Vert <> \biggr\Vert]], {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+      d(1, get_visual),
+    })
+  ),
+  s(
     { trig = "(.)got", regTrig = true, wordTrig = false },
     fmta([[<>\overbracket[0pt]{\rightarrow}^{<>}]], {
       f(function(_, snip)
@@ -495,7 +517,7 @@ Além disso, alguns textos em itálicos são clicáveis - normalmente, afim de f
   ),
 
   s(
-    { trig = "(.)rpf", regTrig = true, wordTrig = false },
+    { trig = "(.)rig", regTrig = true, wordTrig = false },
     fmta([[<>\lim_{<>\to <>^{+}}<>]], {
       f(function(_, snip)
         return snip.captures[1]
@@ -547,7 +569,7 @@ Além disso, alguns textos em itálicos são clicáveis - normalmente, afim de f
 
   s(
     { trig = "(.)cs", regTrig = true, wordTrig = false },
-    fmta([[<>\cos^{<>}{(<>)}]], {
+    fmta([[<>\cos^{<>}{<>}]], {
       f(function(_, snip)
         return snip.captures[1]
       end),
@@ -557,7 +579,27 @@ Além disso, alguns textos em itálicos são clicáveis - normalmente, afim de f
   ),
   s(
     { trig = "(.)sn", regTrig = true, wordTrig = false },
-    fmta([[<>\sin^{<>}{(<>)}]], {
+    fmta([[<>\sin^{<>}{<>}]], {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+      i(1),
+      d(2, get_visual),
+    })
+  ),
+  s(
+    { trig = "(.)csh", regTrig = true, wordTrig = false },
+    fmta([[<>\cosh^{<>}{<>}]], {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+      i(1),
+      d(2, get_visual),
+    })
+  ),
+  s(
+    { trig = "(.)snh", regTrig = true, wordTrig = false },
+    fmta([[<>\sinh^{<>}{<>}]], {
       f(function(_, snip)
         return snip.captures[1]
       end),
@@ -567,7 +609,7 @@ Além disso, alguns textos em itálicos são clicáveis - normalmente, afim de f
   ),
   s(
     { trig = "(.)log", regTrig = true, wordTrig = false },
-    fmta([[<>\log^{<>}{(<>)}]], {
+    fmta([[<>\log^{<>}{<>}]], {
       f(function(_, snip)
         return snip.captures[1]
       end),
@@ -577,7 +619,7 @@ Além disso, alguns textos em itálicos são clicáveis - normalmente, afim de f
   ),
   s(
     { trig = "(.)ln", regTrig = true, wordTrig = false },
-    fmta([[<>\ln^{<>}{(<>)}]], {
+    fmta([[<>\ln^{<>}{<>}]], {
       f(function(_, snip)
         return snip.captures[1]
       end),
@@ -587,7 +629,7 @@ Além disso, alguns textos em itálicos são clicáveis - normalmente, afim de f
   ),
   s(
     { trig = "(.)tg", regTrig = true, wordTrig = false },
-    fmta([[<>\tan^{<>}{(<>)}]], {
+    fmta([[<>\tan^{<>}{<>}]], {
       f(function(_, snip)
         return snip.captures[1]
       end),
@@ -597,7 +639,7 @@ Além disso, alguns textos em itálicos são clicáveis - normalmente, afim de f
   ),
   s(
     { trig = "(.)det", regTrig = true, wordTrig = false },
-    fmta([[<>\det{(<>)}]], {
+    fmta([[<>\det{<>}]], {
       f(function(_, snip)
         return snip.captures[1]
       end),
@@ -694,7 +736,7 @@ Além disso, alguns textos em itálicos são clicáveis - normalmente, afim de f
   ),
   s(
     { trig = "(.)max", regTrig = true, wordTrig = false },
-    fmta([[<>\max_{<>}]], {
+    fmta([[<>\max\limits_{<>}]], {
       f(function(_, snip)
         return snip.captures[1]
       end),
@@ -703,7 +745,7 @@ Além disso, alguns textos em itálicos são clicáveis - normalmente, afim de f
   ),
   s(
     { trig = "(.)min", regTrig = true, wordTrig = false },
-    fmta([[<>\min_{<>}]], {
+    fmta([[<>\min\limits_{<>}]], {
       f(function(_, snip)
         return snip.captures[1]
       end),
@@ -766,5 +808,64 @@ Além disso, alguns textos em itálicos são clicáveis - normalmente, afim de f
       rep(2),
       i(0),
     })
+  ),
+  s(
+    {
+      trig = "(.)reminder",
+      regTrig = true,
+      wordTrig = false,
+    },
+    fmta(
+      [[
+          \begin{tcolorbox}[
+          skin=enhanced,
+          title=Lembrete!,
+          after title={\hfill <>},
+          fonttitle=\bfseries,
+          sharp corners=downhill,
+		      colframe=black,
+          colbacktitle=yellow!75!white, 
+          colback=yellow!30,
+          colbacklower=black,
+		      coltitle=black,
+          %drop fuzzy shadow,
+          drop large lifted shadow
+          ]
+          <>
+          \end{tcolorbox}
+      ]],
+      {
+        i(1),
+        i(2),
+      }
+    )
+  ),
+  s(
+    {
+      trig = "(.)obs",
+      regTrig = true,
+      wordTrig = false,
+    },
+    fmta(
+      [[
+          \begin{tcolorbox}[
+          skin=enhanced,
+          title=Observação,
+          fonttitle=\bfseries,
+		      colframe=black,
+          colbacktitle=cyan!75!white, 
+          colback=cyan!15,
+          colbacklower=black,
+		      coltitle=black,
+          drop fuzzy shadow,
+          %drop large lifted shadow
+          ]
+          <>
+          \end{tcolorbox}
+      ]],
+      {
+        i(1),
+      }
+    )
   ),
 }

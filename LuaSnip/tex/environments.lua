@@ -173,7 +173,7 @@ return {
         f(function(_, snip)
           return snip.captures[1]
         end),
-        i(1),
+        d(1, get_visual),
       }
     )
   ),
@@ -269,10 +269,32 @@ return {
     )
   ),
   s(
+    { trig = "msnice", regTrig = true, wordTrig = false },
+    fmta(
+      [[
+      \begin{bNiceMatrix}[first-col, first-row]
+        <>
+      \end{bNiceMatrix}
+    ]],
+      { i(0) }
+    )
+  ),
+  s(
+    { trig = "mspnice", regTrig = true, wordTrig = false },
+    fmta(
+      [[
+      \begin{pNiceMatrix}[first-col, first-row]
+        <>
+      \end{pNiceMatrix}
+    ]],
+      { i(0) }
+    )
+  ),
+  s(
     { trig = "tmc", regTrig = true, wordTrig = false },
     fmta(
       [[
-      <>\multicolumn{<>}{<>}
+      <>\multicolumn{<>}{<>}{<>}
     ]],
       {
         f(function(_, snip)
@@ -280,6 +302,7 @@ return {
         end),
         i(1),
         i(2),
+        i(3),
       }
     )
   ),
@@ -287,7 +310,7 @@ return {
     { trig = "tmr", regTrig = true, wordTrig = false },
     fmta(
       [[
-      <>\multirow{<>}{<>}
+      <>\multirow{<>}{<>}{<>}
     ]],
       {
         f(function(_, snip)
@@ -295,6 +318,7 @@ return {
         end),
         i(1),
         i(2),
+        i(3),
       }
     )
   ),
@@ -410,7 +434,7 @@ return {
       [[
   \begin{figure}[H]
   \begin{center}
-  \includegraphics[height=\textheight, width=\textwidth, keepaspectratio]{<>}
+  \includegraphics[height=\textheight, width=\textwidth, keepaspectratio]{./Images/<>}
   \end{center}
   \caption{<>}
   \label{<>}
@@ -474,14 +498,14 @@ return {
       }
     )
   ),
-
   s(
-    { trig = "afk" },
+    { trig = "rbp" },
     fmta(
       [[
-  <><> = \left\{\begin{array}{ll}
+    <>\left.\begin{array}{ll}
+      <> \\
       <>
-    \end{array}\right.
+    \end{array}\right\}
   ]],
       {
         f(function(_, snip)
@@ -492,14 +516,13 @@ return {
       }
     )
   ),
-
   s(
-    { trig = "rfk" },
+    { trig = "afk" },
     fmta(
       [[
-  <><> = \left.\begin{array}{ll}
+  <><> = \left\{\begin{array}{ll}
       <>
-    \end{array}\right\{
+    \end{array}\right.
   ]],
       {
         f(function(_, snip)
@@ -717,6 +740,23 @@ return {
         rep(4),
         rep(1),
         i(5),
+      }
+    )
+  ),
+
+  s(
+    { trig = "(.)clr", regTrig = true, wordTrig = false },
+    fmta(
+      [[
+      <>{\color{<>}<>}<>
+      ]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+        i(1),
+        d(2, get_visual),
+        i(0),
       }
     )
   ),

@@ -97,6 +97,14 @@ return {
     })
   ),
   s(
+    { trig = "(.),t", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+    fmta("<>\\Theta ", {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+    })
+  ),
+  s(
     { trig = "(.);f", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
     fmta("<>\\varphi ", {
       f(function(_, snip)
@@ -107,6 +115,22 @@ return {
   s(
     { trig = "(.),f", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
     fmta("<>\\Phi ", {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+    })
+  ),
+  s(
+    { trig = "(.);j", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+    fmta("<>\\psi ", {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+    })
+  ),
+  s(
+    { trig = "(.),j", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+    fmta("<>\\Psi ", {
       f(function(_, snip)
         return snip.captures[1]
       end),
