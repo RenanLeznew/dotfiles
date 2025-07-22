@@ -3,7 +3,11 @@ require("config.lazy")
 
 require("plugins.LuaSnip")
 
-require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/LuaSnip/" })
+if vim.fn.has("win32") == 1 then
+  require("luasnip.loaders.from_lua").load({ paths = "~\\AppData\\Local\\nvim\\LuaSnip\\" })
+elseif vim.fn.has("unix") == 1 then
+  require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/LuaSnip/" })
+end
 
 require("luasnip").config.set_config({
   history = false,
@@ -79,7 +83,10 @@ smap <silent><expr> <C-f> luasnip#choice_active() ? '<Plug>luasnip-next-choice' 
 set encoding=utf-8
 setlocal spell
 set spelllang=nl,pt_br
+if has("win32")
+set spellfile=~\\AppData\\Local\\nvim\\spell\\pt.utf-8.add
+elseif has("unix")
 set spellfile=~/.config/nvim/spell/pt.utf-8.add
+endif
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
-
 ]])
