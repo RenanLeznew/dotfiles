@@ -448,8 +448,8 @@ Além disso, alguns textos em itálicos são clicáveis - normalmente, afim de f
   ),
 
   s(
-    { trig = "(.)rif", regTrig = true, wordTrig = false },
-    fmta([[<>\overbracket[0pt]{\longrightarrow}^{<>\to <>}]], {
+    { trig = "(.)cnv", regTrig = true, wordTrig = false },
+    fmta([[<>\stack{<> \\ \rightarrow \\ <>}]], {
       f(function(_, snip)
         return snip.captures[1]
       end),
