@@ -8,6 +8,7 @@ return {
         "luacheck",
         "shellcheck",
         "shfmt",
+        "texlab",
         "tailwindcss-language-server",
         "typescript-language-server",
         "css-lsp",
