@@ -625,6 +625,65 @@ return {
       }
     )
   ),
+  s(
+    { trig = "nb[", snippetType = "autosnippet" },
+    fmta(
+      [[
+    <>\bigl[<>\bigr]
+  ]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+        d(1, get_visual),
+      }
+    )
+  ),
+
+  s(
+    { trig = "nb(", snippetType = "autosnippet" },
+    fmta(
+      [[
+    <>\bigl(<>\bigr)
+  ]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+        d(1, get_visual),
+      }
+    )
+  ),
+
+  s(
+    { trig = "nb{", snippetType = "autosnippet" },
+    fmta(
+      [[
+    <>\bigl\{<>\bigr\}
+  ]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+        d(1, get_visual),
+      }
+    )
+  ),
+
+  s(
+    { trig = "nb\\", snippetType = "autosnippet" },
+    fmta(
+      [[
+    <>\bigl\vert <> \bigr\vert
+  ]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+        d(1, get_visual),
+      }
+    )
+  ),
 
   s(
     { trig = "evl" },
@@ -757,6 +816,49 @@ return {
         i(1),
         d(2, get_visual),
         i(0),
+      }
+    )
+  ),
+
+  s(
+    { trig = "(.)mcl", regTrig = true, wordTrig = false },
+    fmta(
+      [[
+    <>\mathclap{<>}
+  ]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+        d(1, get_visual),
+      }
+    )
+  ),
+  s(
+    { trig = "(.)mll", regTrig = true, wordTrig = false },
+    fmta(
+      [[
+    <>\mathllap{<>}
+  ]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+        d(1, get_visual),
+      }
+    )
+  ),
+  s(
+    { trig = "(.)mrl", regTrig = true, wordTrig = false },
+    fmta(
+      [[
+    <>\mathrlap{<>}
+  ]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+        d(1, get_visual),
       }
     )
   ),
