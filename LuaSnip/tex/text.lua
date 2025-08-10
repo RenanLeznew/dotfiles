@@ -402,7 +402,7 @@ Além disso, alguns textos em itálicos são clicáveis - normalmente, afim de f
 
   s(
     { trig = "(.)|", regTrig = true, wordTrig = false },
-    fmta([[<>|<>|]], {
+    fmta([[<>| <> |]], {
       f(function(_, snip)
         return snip.captures[1]
       end),
@@ -426,15 +426,6 @@ Além disso, alguns textos em itálicos são clicáveis - normalmente, afim de f
         return snip.captures[1]
       end),
       d(1, get_visual),
-    })
-  ),
-  s(
-    { trig = "(.)got", regTrig = true, wordTrig = false },
-    fmta([[<>\overbracket[0pt]{\rightarrow}^{<>}]], {
-      f(function(_, snip)
-        return snip.captures[1]
-      end),
-      i(1),
     })
   ),
   s(
