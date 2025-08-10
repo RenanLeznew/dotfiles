@@ -759,6 +759,16 @@ Além disso, alguns textos em itálicos são clicáveis - normalmente, afim de f
       end),
     })
   ),
+
+  s(
+    { trig = "(.)eqv", regTrig = true, wordTrig = false },
+    fmta([[<>\equiv ]], {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+    })
+  ),
+
   s(
     { trig = "(.)prp", regTrig = true, wordTrig = false },
     fmta([[<>\perp ]], {

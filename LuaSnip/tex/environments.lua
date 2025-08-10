@@ -71,14 +71,28 @@ return {
 
   --Equation
   s(
-    { trig = "([^%a])eq", regTrig = true, wordTrig = false, dscr = "This will open an equation environment" },
+    { trig = "([^%a])alg", regTrig = true, wordTrig = false, dscr = "This will open an equation environment" },
     fmta(
       [[
-     \begin{equation*}
+     \begin{align*}
          <>
-     \end{equation*}
+     \end{align*}
    ]],
       { i(0) }
+    ) -- The fmta makes for more human-friendly snippets, the a means the default delimiter is <>, thus better than {} for LaTeX.
+    -- Here, i(0) signals an exit point once the snippet completes.
+  ),
+
+  s(
+    { trig = "([^%a])fnc", regTrig = true, wordTrig = false, dscr = "This will open an equation environment" },
+    fmta(
+      [[
+     \begin{align*}
+         <>:&<>\rightarrow<> \\
+            &<>\longmapsto <>
+     \end{align*}
+   ]],
+      { i(0), i(1), i(2), i(3), i(4) }
     ) -- The fmta makes for more human-friendly snippets, the a means the default delimiter is <>, thus better than {} for LaTeX.
     -- Here, i(0) signals an exit point once the snippet completes.
   ),
