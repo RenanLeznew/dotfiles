@@ -581,7 +581,7 @@ return {
   ),
 
   s(
-    { trig = "bb[", snippetType = "autosnippet" },
+    { trig = "(.)bb[", regTrig = true, wordTrig = false },
     fmta(
       [[
     <>\biggl[<>\biggr]
@@ -596,7 +596,7 @@ return {
   ),
 
   s(
-    { trig = "bb(", snippetType = "autosnippet" },
+    { trig = "(.)bb(", regTrig = true, wordTrig = false },
     fmta(
       [[
     <>\biggl(<>\biggr)
@@ -611,7 +611,7 @@ return {
   ),
 
   s(
-    { trig = "bb{", snippetType = "autosnippet" },
+    { trig = "(.)bb{", regTrig = true, wordTrig = false },
     fmta(
       [[
     <>\biggl\{<>\biggr\}
@@ -626,7 +626,7 @@ return {
   ),
 
   s(
-    { trig = "bb\\", snippetType = "autosnippet" },
+    { trig = "(.)bb\\", regTrig = true, wordTrig = false },
     fmta(
       [[
     <>\biggl\vert <> \biggr\vert
@@ -640,7 +640,7 @@ return {
     )
   ),
   s(
-    { trig = "nb[", snippetType = "autosnippet" },
+    { trig = "(.)nb[", regTrig = true, wordTrig = false },
     fmta(
       [[
     <>\bigl[<>\bigr]
@@ -655,7 +655,7 @@ return {
   ),
 
   s(
-    { trig = "nb(", snippetType = "autosnippet" },
+    { trig = "(.)nb(", regTrig = true, wordTrig = false },
     fmta(
       [[
     <>\bigl(<>\bigr)
@@ -670,7 +670,7 @@ return {
   ),
 
   s(
-    { trig = "nb{", snippetType = "autosnippet" },
+    { trig = "(.)nb{", regTrig = true, wordTrig = false },
     fmta(
       [[
     <>\bigl\{<>\bigr\}
@@ -685,7 +685,7 @@ return {
   ),
 
   s(
-    { trig = "nb\\", snippetType = "autosnippet" },
+    { trig = "(.)nb\\", regTrig = true, wordTrig = false },
     fmta(
       [[
     <>\bigl\vert <> \bigr\vert

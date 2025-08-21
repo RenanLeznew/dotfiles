@@ -34,4 +34,18 @@ return {
       require("r").setup(opts)
     end,
   },
+  -- {
+  --  "R-nvim/cmp-r",
+  --  enabled = true,
+  --  {
+  --    requires = {
+  --      "hrsh7th/nvim-cmp",
+  --      "hrsh7th/cmp-nvim-lsp",
+  --    },
+  --    config = function()
+  --      require("cmp").setup({ sources = { { name = "cmp_r" } } })
+  --      require("cmp_r").setup({})
+  --    end,
+  --  },
+  --},
 }
