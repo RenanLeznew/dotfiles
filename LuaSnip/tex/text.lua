@@ -133,14 +133,14 @@ return {
   ),
   --Mathbb
   s(
-    { trig = "mb" },
+    { trig = "(.)mb", regTrig = true, wordTrig = false },
     fmta("\\mathbb{<>}", {
       d(1, get_visual),
     })
   ),
 
   s(
-    { trig = "mbo" },
+    { trig = "(.)mbo", regTrig = true, wordTrig = false },
     fmta("\\mathbb{<>}^{\\times}", {
       d(1, get_visual),
     })
@@ -148,21 +148,21 @@ return {
 
   --Mathcal
   s(
-    { trig = "mc" },
+    { trig = "(.)mc", regTrig = true, wordTrig = false },
     fmta("\\mathcal{<>}", {
       d(1, get_visual),
     })
   ),
   --Mathfrak
   s(
-    { trig = "mk" },
+    { trig = "(.)mk", regTrig = true, wordTrig = false },
     fmta("\\mathfrak{<>}", {
       d(1, get_visual),
     })
   ),
   --Mathroman
   s(
-    { trig = "mr" },
+    { trig = "(.)mr", regTrig = true, wordTrig = false },
     fmta("\\mathrm{<>}", {
       d(1, get_visual),
     })

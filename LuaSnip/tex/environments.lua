@@ -465,10 +465,26 @@ return {
   s({ trig = "ggc", regTrig = true, wordTrig = false }, t("\\blacktriangle")),
 
   s(
-    { trig = "([^%a])inn", regTrig = true, wordTrig = false },
+    { trig = "(.)Inn", regTrig = true, wordTrig = false },
     fmt(
       [[
-    {}\left< {}, {} \right>
+    {}\biggl\langle {}, {} \biggr\rangle
+  ]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+        i(1),
+        i(2),
+      }
+    )
+  ),
+
+  s(
+    { trig = "(.)inn", regTrig = true, wordTrig = false },
+    fmt(
+      [[
+    {}\langle {}, {} \rangle
   ]],
       {
         f(function(_, snip)
