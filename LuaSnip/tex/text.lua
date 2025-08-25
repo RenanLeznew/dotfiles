@@ -134,14 +134,20 @@ return {
   --Mathbb
   s(
     { trig = "(.)mb", regTrig = true, wordTrig = false },
-    fmta("\\mathbb{<>}", {
+    fmta("\\<>mathbb{<>}", {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
       d(1, get_visual),
     })
   ),
 
   s(
     { trig = "(.)mbo", regTrig = true, wordTrig = false },
-    fmta("\\mathbb{<>}^{\\times}", {
+    fmta("\\<>mathbb{<>}^{\\times}", {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
       d(1, get_visual),
     })
   ),
@@ -149,21 +155,30 @@ return {
   --Mathcal
   s(
     { trig = "(.)mc", regTrig = true, wordTrig = false },
-    fmta("\\mathcal{<>}", {
+    fmta("\\<>mathcal{<>}", {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
       d(1, get_visual),
     })
   ),
   --Mathfrak
   s(
     { trig = "(.)mk", regTrig = true, wordTrig = false },
-    fmta("\\mathfrak{<>}", {
+    fmta("\\<>mathfrak{<>}", {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
       d(1, get_visual),
     })
   ),
   --Mathroman
   s(
     { trig = "(.)mr", regTrig = true, wordTrig = false },
-    fmta("\\mathrm{<>}", {
+    fmta("\\<>mathrm{<>}", {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
       d(1, get_visual),
     })
   ),
