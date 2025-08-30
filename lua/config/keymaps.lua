@@ -20,8 +20,8 @@ keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- New tabs
 keymap.set("n", "te", ":tabedit", opts)
-keymap.set("n", ">>", ":tabnext<Return>", opts)
-keymap.set("n", "<<", ":tabprev<Return>", opts)
+keymap.set("n", "tn", ":tabnext<Return>", opts)
+keymap.set("n", "tp", ":tabprev<Return>", opts)
 
 -- Split window
 keymap.set("n", "ss", ":split<Return>", opts)
@@ -49,13 +49,24 @@ keymap.set("n", "<leader>oc", ":RunClose<CR>", { noremap = true, silent = false 
 keymap.set("n", "<leader>crf", ":CRFiletype<CR>", { noremap = true, silent = false })
 keymap.set("n", "<leader>crp", ":CRProjects<CR>", { noremap = true, silent = false })
 
--- Obsidian
+-- Obsidian Related
 
 keymap.set("n", "<leader>Ot", ":ObsidianTemplate<CR>", { noremap = true, silent = false })
-keymap.set("n", "<leader>Oc", ":ObsidianCheck<CR>", { noremap = true, silent = false })
+keymap.set("n", "<leader>Ov", ":ObsidianCheck<CR>", { noremap = true, silent = false })
 keymap.set("n", "<leader>Ob", ":ObsidianBacklinks<CR>", { noremap = true, silent = false })
+keymap.set("n", "<leader>Op", ":PeekOpen<CR>", { noremap = true, silent = false })
+keymap.set("n", "<leader>Oc", ":PeekClose<CR>", { noremap = true, silent = false })
 
--- Diagnostics
-keymap.set("n", "<C-j>", function()
-  vim.diagnostic.goto_next()
-end, opts)
+-- Yanky
+keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
+keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
+
+keymap.set("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
+keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)")
+
+-- Search and Replace
+keymap.set({ "n", "x" }, "<leader>sr", function()
+  require("ssr").open()
+end)

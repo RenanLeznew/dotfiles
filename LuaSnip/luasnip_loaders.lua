@@ -16,8 +16,17 @@ local m = require("luasnip.extras").m
 local lambda = require("luasnip.extras").l
 local postfix = require("luasnip.extras.postfix").postfix
 -----------------------------------------------
-vim.keymap.set(
-  "n",
-  "<leader>;",
-  '<Cmd>lua require("luasnip.loaders.from_lua").load({paths = "~/AppData/Local/nvim/LuaSnip"})<CR>'
-)
+
+if vim.fn.has("win32") == 1 then
+  vim.keymap.set(
+    "n",
+    "<leader>;",
+    '<Cmd>lua require("luasnip.loaders.from_lua").load({paths = "~\\AppData\\Local\\nvim\\LuaSnip"})<CR>'
+  )
+elseif vim.fn.has("unix") == 1 then
+  vim.keymap.set(
+    "n",
+    "<leader>;",
+    '<Cmd>lua require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/LuaSnip"})<CR>'
+  )
+end

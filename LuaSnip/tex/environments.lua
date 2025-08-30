@@ -1,3 +1,4 @@
+require("luasnip.loaders.from_lua").load({ path = "../luasnip_loaders.lua" })
 -- This is the `get_visual` function.
 -- ----------------------------------------------------------------------------
 -- Summary: If `SELECT_RAW` is populated with a visual selection, the function
@@ -15,35 +16,35 @@ end
 local line_begin = require("luasnip.extras.expand_conditions").line_begin
 
 -- This local is used to tell when you're in math mode.
-local in_mathzone = function()
-  return vim.fn["vimtex#syntax#in_mathzone"]() == 2
-end
+--local in_mathzone = function()
+-- return vim.fn["vimtex#syntax#in_mathzone"]() == 2
+--end
 -- Some LaTeX-specific conditional expansion functions (requires VimTeX)
 
-local tex_utils = {}
-tex_utils.in_mathzone = function() -- math context detection
-  return vim.fn["vimtex#syntax#in_mathzone"]() == 1
-end
-tex_utils.in_text = function()
-  return not tex_utils.in_mathzone()
-end
-tex_utils.in_comment = function() -- comment detection
-  return vim.fn["vimtex#syntax#in_comment"]() == 1
-end
-tex_utils.in_env = function(name) -- generic environment detection
-  local is_inside = vim.fn["vimtex#env#is_inside"](name)
-  return (is_inside[1] > 0 and is_inside[2] > 0)
-end
--- A few concrete environments---adapt as needed
-tex_utils.in_equation = function() -- equation environment detection
-  return tex_utils.in_env("equation")
-end
-tex_utils.in_itemize = function() -- itemize environment detection
-  return tex_utils.in_env("itemize")
-end
-tex_utils.in_tikz = function() -- TikZ picture environment detection
-  return tex_utils.in_env("tikzpicture")
-end
+--local tex_utils = {}
+--tex_utils.in_mathzone = function() -- math context detection
+-- return vim.fn["vimtex#syntax#in_mathzone"]() == 1
+--end
+--tex_utils.in_text = function()
+-- return not tex_utils.in_mathzone()
+--end
+--tex_utils.in_comment = function() -- comment detection
+-- return vim.fn["vimtex#syntax#in_comment"]() == 1
+--end
+--tex_utils.in_env = function(name) -- generic environment detection
+-- local is_inside = vim.fn["vimtex#env#is_inside"](name)
+-- return (is_inside[1] > 0 and is_inside[2] > 0)
+--end
+--- A few concrete environments---adapt as needed
+--tex_utils.in_equation = function() -- equation environment detection
+-- return tex_utils.in_env("equation")
+--end
+--tex_utils.in_itemize = function() -- itemize environment detection
+-- return tex_utils.in_env("itemize")
+--end
+--tex_utils.in_tikz = function() -- TikZ picture environment detection
+-- return tex_utils.in_env("tikzpicture")
+--end
 
 return {
   --Fraction (w/ regex)
@@ -237,13 +238,7 @@ return {
     }
   ),
   --Draw in tikz environment (using conditionals)
-  s(
-    { trig = "dd" },
-    fmta("\\draw [<>]", {
-      i(1, "Parameters"),
-    }),
-    { condition = tex_utils.in_tikz }
-  ),
+
   s(
     { trig = "(.)ffk", regTrig = true, wordTrig = false },
     fmta(
