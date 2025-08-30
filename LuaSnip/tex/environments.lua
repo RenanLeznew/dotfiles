@@ -4,6 +4,7 @@ require("luasnip.loaders.from_lua").load({ path = "../luasnip_loaders.lua" })
 -- Summary: If `SELECT_RAW` is populated with a visual selection, the function
 -- returns an insert node whose initial text is set to the visual selection.
 -- If `SELECT_RAW` is empty, the function simply returns an empty insert node.
+--
 local get_visual = function(args, parent)
   if #parent.snippet.env.SELECT_RAW > 0 then
     return sn(nil, i(1, parent.snippet.env.SELECT_RAW))
@@ -592,7 +593,7 @@ return {
   ),
 
   s(
-    { trig = "(.)bb[", regTrig = true, wordTrig = false },
+    { trig = "(.)bb%[", regTrig = true, wordTrig = false },
     fmta(
       [[
     <>\biggl[<>\biggr]
@@ -607,7 +608,7 @@ return {
   ),
 
   s(
-    { trig = "(.)bb(", regTrig = true, wordTrig = false },
+    { trig = "(.)bb%(", regTrig = true, wordTrig = false },
     fmta(
       [[
     <>\biggl(<>\biggr)
@@ -622,7 +623,7 @@ return {
   ),
 
   s(
-    { trig = "(.)bb{", regTrig = true, wordTrig = false },
+    { trig = "(.)bb%{", regTrig = true, wordTrig = false },
     fmta(
       [[
     <>\biggl\{<>\biggr\}
@@ -651,7 +652,7 @@ return {
     )
   ),
   s(
-    { trig = "(.)nb[", regTrig = true, wordTrig = false },
+    { trig = "(.)nb%[", regTrig = true, wordTrig = false },
     fmta(
       [[
     <>\bigl[<>\bigr]
@@ -666,7 +667,7 @@ return {
   ),
 
   s(
-    { trig = "(.)nb(", regTrig = true, wordTrig = false },
+    { trig = "(.)nb%(", regTrig = true, wordTrig = false },
     fmta(
       [[
     <>\bigl(<>\bigr)
@@ -681,7 +682,7 @@ return {
   ),
 
   s(
-    { trig = "(.)nb{", regTrig = true, wordTrig = false },
+    { trig = "(.)nb%{", regTrig = true, wordTrig = false },
     fmta(
       [[
     <>\bigl\{<>\bigr\}
@@ -758,7 +759,7 @@ return {
   ),
 
   s(
-    { trig = "unb" },
+    { trig = "(.)unb", regTrig = true, wordTrig = false },
     fmta(
       [[
     <>\underbrace{<>}_{<>}
