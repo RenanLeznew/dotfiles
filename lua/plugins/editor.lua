@@ -143,8 +143,10 @@ return {
         },
       },
     }
-    telescope.setup(opts)
-    require("telescope").load_extension("fzf")
+    telescope.setup(opts)({
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
+    })
     require("telescope").load_extension("file_browser")
   end,
 }

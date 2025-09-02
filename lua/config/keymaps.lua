@@ -41,21 +41,21 @@ keymap.set("n", "<C-w><down>", "<C-w>-")
 
 -- Code Runner
 
-keymap.set("n", "<leader>o", ":RunCode<CR>", { noremap = true, silent = false })
-keymap.set("n", "<leader>of", ":RunFile<CR>", { noremap = true, silent = false })
-keymap.set("n", "<leader>oft", ":RunFile tab<CR>", { noremap = true, silent = false })
-keymap.set("n", "<leader>op", ":RunProject<CR>", { noremap = true, silent = false })
-keymap.set("n", "<leader>oc", ":RunClose<CR>", { noremap = true, silent = false })
-keymap.set("n", "<leader>crf", ":CRFiletype<CR>", { noremap = true, silent = false })
-keymap.set("n", "<leader>crp", ":CRProjects<CR>", { noremap = true, silent = false })
+keymap.set("n", "<leader>o", ":RunCode<CR>", opts)
+keymap.set("n", "<leader>of", ":RunFile<CR>", opts)
+keymap.set("n", "<leader>oft", ":RunFile tab<CR>", opts)
+keymap.set("n", "<leader>op", ":RunProject<CR>", opts)
+keymap.set("n", "<leader>oc", ":RunClose<CR>", opts)
+keymap.set("n", "<leader>crf", ":CRFiletype<CR>", opts)
+keymap.set("n", "<leader>crp", ":CRProjects<CR>", opts)
 
 -- Obsidian Related
 
-keymap.set("n", "<leader>Ot", ":ObsidianTemplate<CR>", { noremap = true, silent = false })
-keymap.set("n", "<leader>Ov", ":ObsidianCheck<CR>", { noremap = true, silent = false })
-keymap.set("n", "<leader>Ob", ":ObsidianBacklinks<CR>", { noremap = true, silent = false })
-keymap.set("n", "<leader>Op", ":PeekOpen<CR>", { noremap = true, silent = false })
-keymap.set("n", "<leader>Oc", ":PeekClose<CR>", { noremap = true, silent = false })
+keymap.set("n", "<leader>Ot", ":ObsidianTemplate<CR>", opts)
+keymap.set("n", "<leader>Ov", ":ObsidianCheck<CR>", opts)
+keymap.set("n", "<leader>Ob", ":ObsidianBacklinks<CR>", opts)
+keymap.set("n", "<leader>Op", ":PeekOpen<CR>", opts)
+keymap.set("n", "<leader>Oc", ":PeekClose<CR>", opts)
 
 -- Yanky
 keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
@@ -70,3 +70,8 @@ keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)")
 keymap.set({ "n", "x" }, "<leader>sr", function()
   require("ssr").open()
 end)
+
+-- Pomodoro
+keymap.set("n", "<leader>ts", ":PomodoroStart<CR>")
+keymap.set("n", "<leader>tb", ":PomodoroStop<CR>")
+keymap.set("n", "<leader>tu", ":PomodoroUI<CR>")
