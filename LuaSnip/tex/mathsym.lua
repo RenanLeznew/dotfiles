@@ -756,6 +756,21 @@ return {
   s({ trig = "bnd" }, t("\\partial ")),
 
   s(
+    { trig = "(.)dim", regTrig = true, wordTrig = false },
+    fmta(
+      [[
+      <>\mathrm{dim}(<>)
+    ]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+        i(1),
+      }
+    )
+  ),
+
+  s(
     { trig = "(.)deg", regTrig = true, wordTrig = false },
     fmta(
       [[
