@@ -623,7 +623,7 @@ return {
   ),
 
   s(
-    { trig = "(.)bb%{", regTrig = true, wordTrig = false },
+    { trig = "(.)bb%{", regTrig = true, wordTrig = false, autosnippet = true },
     fmta(
       [[
     <>\biggl\{<>\biggr\}
@@ -682,7 +682,7 @@ return {
   ),
 
   s(
-    { trig = "(.)nb%{", regTrig = true, wordTrig = false },
+    { trig = "(.)nb%{", regTrig = true, wordTrig = false, autosnippet = true },
     fmta(
       [[
     <>\bigl\{<>\bigr\}

@@ -903,4 +903,19 @@ return {
       }
     )
   ),
+
+  s(
+    { trig = "(.)sgn", regTrig = true, wordTrig = false },
+    fmta(
+      [[
+      <>\mathrm{sgn}(<>)
+    ]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+        i(1),
+      }
+    )
+  ),
 }
