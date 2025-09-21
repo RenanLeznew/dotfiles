@@ -776,6 +776,15 @@ Além disso, alguns textos em itálicos são clicáveis - normalmente, afim de f
   ),
 
   s(
+    { trig = "(.)Eev", regTrig = true, wordTrig = false },
+    fmta([[<>\bigwedge ]], {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+    })
+  ),
+
+  s(
     { trig = "(.)=", regTrig = true, wordTrig = false },
     fmta([[<>\neq ]], {
       f(function(_, snip)
@@ -892,5 +901,32 @@ Além disso, alguns textos em itálicos são clicáveis - normalmente, afim de f
         i(1),
       }
     )
+  ),
+
+  s(
+    { trig = "(.)#", regTrig = true, wordTrig = false },
+    fmta([[<>\# ]], {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+    })
+  ),
+
+  s(
+    { trig = "(.)&", regTrig = true, wordTrig = false },
+    fmta([[<>\& ]], {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+    })
+  ),
+
+  s(
+    { trig = "(.)%", regTrig = true, wordTrig = false },
+    fmta([[<>\% ]], {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+    })
   ),
 }

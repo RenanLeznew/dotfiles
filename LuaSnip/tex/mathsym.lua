@@ -864,33 +864,6 @@ return {
     )
   ),
   s(
-    { trig = "(.)and", regTrig = true, wordTrig = false },
-    fmta(
-      [[
-      <>\wedge 
-    ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
-    )
-  ),
-  s(
-    { trig = "(.)or", regTrig = true, wordTrig = false },
-    fmta(
-      [[
-      <>\vee 
-    ]],
-      {
-        f(function(_, snip)
-          return snip.captures[1]
-        end),
-      }
-    )
-  ),
-
-  s(
     { trig = "(.)del", regTrig = true, wordTrig = false },
     fmta(
       [[
