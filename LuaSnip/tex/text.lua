@@ -706,6 +706,14 @@ Além disso, alguns textos em itálicos são clicáveis - normalmente, afim de f
     })
   ),
   s(
+    { trig = "(.)crc", regTrig = true, wordTrig = false },
+    fmta([[<>\tikz[baseline=-0.5ex]\draw[black, fill=black, radius=1.5pt](0, 0)circle;]], {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+    })
+  ),
+  s(
     { trig = "(.)sq", regTrig = true, wordTrig = false },
     fmta([[<>\square]], {
       f(function(_, snip)
