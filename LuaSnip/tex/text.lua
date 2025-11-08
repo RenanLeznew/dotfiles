@@ -454,6 +454,26 @@ Além disso, alguns textos em itálicos são clicáveis - normalmente, afim de f
   ),
 
   s(
+    { trig = "(.)rwc", regTrig = true, wordTrig = false },
+    fmta([[<>\rightharpoonup <>]], {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+      i(1),
+    })
+  ),
+
+  s(
+    { trig = "(.)lwc", regTrig = true, wordTrig = false },
+    fmta([[<>\leftharpoonup <>]], {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+      i(1),
+    })
+  ),
+
+  s(
     { trig = "(.)cnv", regTrig = true, wordTrig = false },
     fmta([[<>\substack{<> \\ \longrightarrow \\ <>}]], {
       f(function(_, snip)
