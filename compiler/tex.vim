@@ -1,100 +1,136 @@
+
 " Settings for compiling LaTeX documents
 if exists("current_compiler")
-	finish
+  finish
 endif
 let current_compiler = "tex"
 
+" ------------------------------------------------------------
+" Base commands for :make (filename '%' is appended later)
+" ------------------------------------------------------------
+let s:pdflatex_base = 'pdflatex -file-line-error -interaction=nonstopmode ' .
+      \ '-halt-on-error -synctex=1 -output-directory=%:h'
+let s:latexmk_base  = 'latexmk -pdf -output-directory=%:h'
 
-" Set make programs for both pdflatex and latexmk
-let s:pdflatex = 'pdflatex -file-line-error -interaction=nonstopmode ' .
-      \ '-halt-on-error -synctex=1 -output-directory=%:h %'
-let s:latexmk = 'latexmk -pdf -output-directory=%:h %'
-
-" Create variables to store pdflatex/latexmk and shell-escape state
+" ------------------------------------------------------------
+" Buffer-local state
+" ------------------------------------------------------------
 let b:tex_use_latexmk = 0
 let b:tex_use_shell_escape = 0
 
-
-" Search for the minted package in the document preamble.
-" Enable b:tex_use_shell_escape if the minted package
-" is detected in the tex file's preamble.
-" --------------------------------------------- "
+" ------------------------------------------------------------
+" Detect minted in the preamble (before \begin{document})
+" ------------------------------------------------------------
 silent execute '!sed "/\\begin{document}/q" ' . expand('%') . ' | grep "minted" > /dev/null'
-if v:shell_error  " 'minted' not found in preamble
-  let b:tex_use_shell_escape = 0  " disable shell escape
-else  " 'minted' found in preamble
-  let b:tex_use_shell_escape = 1  " enable shell escape
+if v:shell_error
+  let b:tex_use_shell_escape = 0
+else
+  let b:tex_use_shell_escape = 1
 endif
 
-
-" User-defined functions
-" ------------------------------------------- "
-" Toggles between latexmk and pdflatex
-function! s:TexToggleLatexmk() abort
-  if b:tex_use_latexmk    " turn off latexmk
-    let b:tex_use_latexmk = 0
-  else  " turn on latexmk
-    let b:tex_use_latexmk = 1
+" ------------------------------------------------------------
+" Ensure VimTeX latexmk config exists (VimTeX reads GLOBAL config)
+" ------------------------------------------------------------
+function! s:EnsureVimtexLatexmkConfig() abort
+  if !exists('g:vimtex_compiler_latexmk') || type(g:vimtex_compiler_latexmk) != v:t_dict
+    let g:vimtex_compiler_latexmk = {}
   endif
-  call s:TexSetMakePrg()  " update Vim's `makeprg` option
+
+  " Keep whatever engine user has; only ensure options list exists
+  if !has_key(g:vimtex_compiler_latexmk, 'options') || type(g:vimtex_compiler_latexmk.options) != v:t_list
+    let g:vimtex_compiler_latexmk.options = [
+          \ '-verbose',
+          \ '-file-line-error',
+          \ '-synctex=1',
+          \ '-interaction=nonstopmode',
+          \ ]
+  endif
 endfunction
 
-" Toggles shell escape compilation on and off
-function! s:TexToggleShellEscape() abort
-  if b:tex_use_shell_escape  " turn off shell escape
-    let b:tex_use_shell_escape = 0
-  else  " turn on shell escape
-    let b:tex_use_shell_escape = 1
+" ------------------------------------------------------------
+" Update VimTeX latexmk options to match b:tex_use_shell_escape
+" (NO recompilation triggered here)
+" ------------------------------------------------------------
+function! s:VimtexApplyShellEscape() abort
+  call s:EnsureVimtexLatexmkConfig()
+
+  " Remove shell-escape flags if present
+  call filter(g:vimtex_compiler_latexmk.options, {_, v ->
+        \ v !=# '-shell-escape' && v !=# '--shell-escape' && v !=# '-no-shell-escape'
+        \ })
+
+  " Add -shell-escape if enabled
+  if b:tex_use_shell_escape
+    call add(g:vimtex_compiler_latexmk.options, '-shell-escape')
   endif
-  call s:TexSetMakePrg()     " update Vim's `makeprg` option
 endfunction
 
-" Sets correct value of `makeprg` based on current values of
-" both `b:tex_use_latexmk` and `b:tex_use_shell_escape`
+" ------------------------------------------------------------
+" :make integration (makeprg)
+" ------------------------------------------------------------
 function! s:TexSetMakePrg() abort
   if b:tex_use_latexmk
-    let &l:makeprg = expand(s:latexmk)
+    let l:cmd = s:latexmk_base
+    " For plain :make + latexmk, pass shell-escape down to LaTeX
+    if b:tex_use_shell_escape
+      let l:cmd .= ' -latexoption=-shell-escape'
+    endif
   else
-    let &l:makeprg = expand(s:pdflatex)
+    let l:cmd = s:pdflatex_base
+    if b:tex_use_shell_escape
+      let l:cmd .= ' -shell-escape'
+    endif
   endif
-  if b:tex_use_shell_escape
-    let &l:makeprg = &makeprg . ' -shell-escape'
-  endif
+
+  " filename LAST (important for pdflatex options!)
+  let &l:makeprg = l:cmd . ' %'
 endfunction
 
+" ------------------------------------------------------------
+" Toggles
+" ------------------------------------------------------------
+function! s:TexToggleLatexmk() abort
+  let b:tex_use_latexmk = !b:tex_use_latexmk
+  call s:TexSetMakePrg()
+  echo 'latexmk(for :make)=' . b:tex_use_latexmk
+endfunction
 
-" Key mappings for functions
-" ---------------------------------------------
-" TexToggleShellEscape
-nmap <leader>te <Plug>TexToggleShellEscape
-nnoremap <script> <Plug>TexToggleShellEscape <SID>TexToggleShellEscape
-nnoremap <SID>TexToggleShellEscape :call <SID>TexToggleShellEscape()<CR>
+function! s:TexToggleShellEscape() abort
+  let b:tex_use_shell_escape = !b:tex_use_shell_escape
 
-" TexToggleLatexmk
-nmap <leader>tl <Plug>TexToggleLatexmk
-nnoremap <script> <Plug>TexToggleLatexmk <SID>TexToggleLatexmk
-nnoremap <SID>TexToggleLatexmk :call <SID>TexToggleLatexmk()<CR>
+  " Update :make command
+  call s:TexSetMakePrg()
 
+  " Update VimTeX latexmk flags (no compilation)
+  call s:VimtexApplyShellEscape()
 
-" Set Vim's `makeprg` and `errorformat` options
-" ---------------------------------------------
-call s:TexSetMakePrg()  " set value of Vim's `makeprg` option
+  echo 'shell_escape=' . b:tex_use_shell_escape
+endfunction
 
-" Note: The errorformat used below assumes the tex source file is 
-" compiled with pdflatex's -file-line-error option enabled.
+" ------------------------------------------------------------
+" Key mappings (buffer-local, direct)
+" ------------------------------------------------------------
+nnoremap <buffer> <leader>te :call <SID>TexToggleShellEscape()<CR>
+nnoremap <buffer> <leader>tl :call <SID>TexToggleLatexmk()<CR>
+
+" ------------------------------------------------------------
+" Initialize makeprg + VimTeX flags once for this buffer
+" ------------------------------------------------------------
+call s:TexSetMakePrg()
+call s:VimtexApplyShellEscape()
+
+" ------------------------------------------------------------
+" errorformat (your original)
+" ------------------------------------------------------------
 setlocal errorformat=%-P**%f
 setlocal errorformat+=%-P**\"%f\"
 
-" Match errors
 setlocal errorformat+=%E!\ LaTeX\ %trror:\ %m
 setlocal errorformat+=%E%f:%l:\ %m
 setlocal errorformat+=%E!\ %m
 
-" More info for undefined control sequences
 setlocal errorformat+=%Z<argument>\ %m
-
-" More info for some errors
 setlocal errorformat+=%Cl.%l\ %m
 
-" Ignore unmatched lines
 setlocal errorformat+=%-G%.%#
+

@@ -37,7 +37,11 @@ let g:vimtex_quickfix_ignore_filters = [
       \ 'Package hyperref Warning: Token not allowed in a PDF string',
       \]
 
-let g:vimtex_view_method='zathura'
+if has("unix") == 1
+  let g:vimtex_view_method='zathura'
+elseif has("win32") == 1
+  let g:vimtex_view_method='SumatraPDF'
+end
 
 if !exists("g:vim_window_id")
   let g:vim_window_id = system("xdotool getactivewindow")

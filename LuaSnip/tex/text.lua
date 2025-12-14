@@ -455,7 +455,7 @@ Além disso, alguns textos em itálicos são clicáveis - normalmente, afim de f
 
   s(
     { trig = "(.)rwc", regTrig = true, wordTrig = false },
-    fmta([[<>\rightharpoonup <>]], {
+    fmta([[<>\stackrel{*}\rightharpoonup <>]], {
       f(function(_, snip)
         return snip.captures[1]
       end),
@@ -465,7 +465,7 @@ Além disso, alguns textos em itálicos são clicáveis - normalmente, afim de f
 
   s(
     { trig = "(.)lwc", regTrig = true, wordTrig = false },
-    fmta([[<>\leftharpoonup <>]], {
+    fmta([[<>\stackrel{*}\leftharpoonup <>]], {
       f(function(_, snip)
         return snip.captures[1]
       end),
