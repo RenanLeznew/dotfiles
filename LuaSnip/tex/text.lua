@@ -212,7 +212,8 @@ return {
   s(
     { trig = "pamble" },
     fmta(
-      [[\documentclass[12pt]{article}
+      [[
+      \documentclass[12pt]{article}
  \usepackage{bookmark}
  \usepackage{amsmath}
  \usepackage{amsthm}
@@ -241,6 +242,18 @@ return {
  \usepackage{accents}
  \usepackage[T1]{fontenc}
  \setcounter{section}{-1}
+
+\usetikzlibrary{positioning, calc, shapes.geometric, shapes.multipart, shapes, arrows.meta, arrows, decorations.markings, external, trees}
+ \tikzstyle{Arrow} = [
+ thick,
+ decoration={
+ markings,
+ mark=at position 1 with {
+ \arrow[thick]{latex}
+ }
+ },
+ shorten >>= 3pt, preaction = {decorate}
+ ]
 
  \pagestyle{fancy}
  \fancyhf{}

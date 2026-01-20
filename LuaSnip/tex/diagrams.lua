@@ -181,14 +181,12 @@ return {
       error/.style ={circle, thick, draw, text centered},
       confounding/.style = {rectangle, thick, text centered, draw, text width = 6em, minimum width = 5.5in},
       outcome/.style = {rectangle, thick, draw, text centered, minimum height = 3.5in, text width = 6em},
-       <>-<>/.tip =Latex, thick]
+       <<->>/.tip =Latex, thick]
         <>
   \end{tikzpicture}
   ]],
       {
         i(1),
-        i(2),
-        i(3),
       }
     )
   ),
