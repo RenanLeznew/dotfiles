@@ -82,8 +82,9 @@ imap <silent><expr> <C-f> luasnip#choice_active() ? '<Plug>luasnip-next-choice' 
 smap <silent><expr> <C-f> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-f>'
 set encoding=utf-8
 setlocal spell
-set spelllang=nl,pt_br
+set spelllang=pt_br
 if has("win32")
+let g:spellfile_URL = 'https://ftp.nlug.nl/pub/vim/runtime/spell/pt.utf-8.spl'
 set spellfile=~\\AppData\\Local\\nvim\\spell\\pt.utf-8.add
 elseif has("unix")
 set spellfile=~/.config/nvim/spell/pt.utf-8.add

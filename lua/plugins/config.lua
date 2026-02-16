@@ -1,5 +1,6 @@
 return {
   {
+    -- Caso não consiga baixar no windows, usar npm install -g tree-sitter-cli !!
     "nvim-treesitter/nvim-treesitter",
     lazy = false,
     build = ":TSUpdate",
