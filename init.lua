@@ -81,12 +81,9 @@ smap <silent><expr> <C-b> luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '<C
 imap <silent><expr> <C-f> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-f>'
 smap <silent><expr> <C-f> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-f>'
 set encoding=utf-8
+if has("unix")
 setlocal spell
 set spelllang=pt_br
-if has("win32")
-let g:spellfile_URL = 'https://ftp.nlug.nl/pub/vim/runtime/spell/pt.utf-8.spl'
-set spellfile=~\\AppData\\Local\\nvim\\spell\\pt.utf-8.add
-elseif has("unix")
 set spellfile=~/.config/nvim/spell/pt.utf-8.add
 endif
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
