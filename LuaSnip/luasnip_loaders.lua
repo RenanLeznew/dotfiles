@@ -16,6 +16,7 @@ local m = require("luasnip.extras").m
 local lambda = require("luasnip.extras").l
 local postfix = require("luasnip.extras.postfix").postfix
 -----------------------------------------------
+ls.filetype_extend("tex", { "plaintex" })
 
 if vim.fn.has("win32") == 1 then
   vim.keymap.set(
