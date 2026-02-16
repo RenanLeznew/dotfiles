@@ -1,5 +1,25 @@
 return {
   {
+    "nvim-treesitter/nvim-treesitter",
+    lazy = false,
+    build = ":TSUpdate",
+    opts = function(_, opts)
+      -- add tsx and treesitter
+      vim.list_extend(opts.ensure_installed, {
+        "tsx",
+        "latex",
+        "bibtex",
+        "markdown",
+        "markdown_inline",
+        "r",
+        "python",
+        "regex",
+        "typescript",
+      })
+    end,
+  },
+  { "nvim-tree/nvim-web-devicons", opts = {} },
+  {
     "smjonas/inc-rename.nvim",
     cmd = "IncRename",
     config = true,
