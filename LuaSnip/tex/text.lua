@@ -189,7 +189,7 @@ return {
       [[ 
       \documentclass[<>]{subfiles}
       \begin{document}
-      \section{<> - <>, 2025}
+      \section{<> - <>, 2026}
       \subsection{Motivações}
       \begin{itemize}
 	      \item <>

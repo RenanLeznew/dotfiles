@@ -447,13 +447,11 @@ return {
   \includegraphics[height=\textheight, width=\textwidth, keepaspectratio]{./Images/<>}
   \end{center}
   \caption{<>}
-  \label{<>}
   \end{figure}
   ]],
       {
         i(1),
         i(2),
-        i(3),
       }
     )
   ),
