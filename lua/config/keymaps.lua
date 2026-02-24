@@ -41,6 +41,7 @@ keymap.set("n", "<C-w><down>", "<C-w>-")
 
 -- Code Runner
 
+keymap.set("n", "<leader>py", ":w:! python3 %", opts)
 keymap.set("n", "<leader>o", ":RunCode<CR>", opts)
 keymap.set("n", "<leader>of", ":RunFile<CR>", opts)
 keymap.set("n", "<leader>oft", ":RunFile tab<CR>", opts)
