@@ -233,6 +233,7 @@ return {
  \usepackage[portuguese]{babel}
  \usepackage{hyperref}
  \usepackage{multirow}
+ \usepackage{setspace}
  \usepackage{lastpage}
  \usepackage{mathtools}
  \usepackage[many]{tcolorbox}
