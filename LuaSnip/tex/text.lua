@@ -213,7 +213,7 @@ return {
     { trig = "pamble" },
     fmta(
       [[
-      \documentclass[12pt]{article}
+      \documentclass[12pt, a4paper]{article}
  \usepackage{bookmark}
  \usepackage{amsmath}
  \usepackage{amsthm}
@@ -227,6 +227,7 @@ return {
  \usepackage{geometry}
  \usepackage{graphicx}
  \usepackage{graphics}
+ \usepackage{indentfirst}
  \usepackage[export]{adjustbox}
  \usepackage{fancyhdr}
  \usepackage[portuguese]{babel}
@@ -241,7 +242,11 @@ return {
  \usepackage{float}
  \usepackage{accents}
  \usepackage[T1]{fontenc}
+
  \setcounter{section}{-1}
+ \setlength{\parindent}{1.25cm}
+ \setlength{\parskip}{0.2em}
+ \onehalfspacing
 
 \usetikzlibrary{positioning, calc, shapes.geometric, shapes.multipart, shapes, arrows.meta, arrows, decorations.markings, external, trees}
  \tikzstyle{Arrow} = [
