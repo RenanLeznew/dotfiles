@@ -886,4 +886,18 @@ return {
       }
     )
   ),
+  s(
+    { trig = "(.)mint", regTrig = true, wordTrig = false },
+    fmta(
+      [[
+    \begin{minted}{<>}
+    <>
+    \end{minted}
+    ]],
+      {
+        i(0),
+        i(1),
+      }
+    )
+  ),
 }

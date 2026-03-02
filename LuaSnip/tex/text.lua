@@ -424,6 +424,17 @@ Além disso, alguns textos em itálicos são clicáveis - normalmente, afim de f
   ),
 
   s(
+    { trig = "(.)bib", regTrig = true, wordTrig = false },
+    fmta([[<>\bibitem{<>}<>]], {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+      i(1),
+      i(2),
+    })
+  ),
+
+  s(
     { trig = "(.)rt", regTrig = true, wordTrig = false },
     fmta([[<>\sqrt[<>]{<>}]], {
       f(function(_, snip)
