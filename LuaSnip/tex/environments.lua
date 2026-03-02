@@ -890,13 +890,13 @@ return {
     { trig = "(.)mint", regTrig = true, wordTrig = false },
     fmta(
       [[
-    \begin{minted}{<>}
+    \begin{minted}[linenos=true]{<>}
     <>
     \end{minted}
     ]],
       {
-        i(0),
         i(1),
+        i(2),
       }
     )
   ),
