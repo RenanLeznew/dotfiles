@@ -66,16 +66,52 @@ return {
 
   --Italic
   s(
-    { trig = "tii", dscr = "Turn selected line in italic mode.", snippetType = "autosnippet" },
+    {
+      trig = "(.)tii",
+      regTrig = TRUE,
+      wordTrig = FALSE,
+      dscr = "Turn selected line in italic mode.",
+      snippetType = "autosnippet",
+    },
     fmta("\\textit{<>}", {
+      d(1, get_visual),
+    })
+  ),
+  s(
+    {
+      trig = "(.)mii",
+      regTrig = TRUE,
+      wordTrig = FALSE,
+      dscr = "Turn selected line in italic mode.",
+      snippetType = "autosnippet",
+    },
+    fmta("\\mathit{<>}", {
       d(1, get_visual),
     })
   ),
 
   --Bold face
   s(
-    { trig = "tbf", dscr = "Turn selected line into bold text.", snippetType = "autosnippet" },
+    {
+      trig = "(.)tbf",
+      regTrig = TRUE,
+      wordTrig = FALSE,
+      dscr = "Turn selected line into bold text.",
+      snippetType = "autosnippet",
+    },
     fmta("\\textbf{<>}", {
+      d(1, get_visual),
+    })
+  ),
+  s(
+    {
+      trig = "(.)mbf",
+      regTrig = TRUE,
+      wordTrig = FALSE,
+      dscr = "Turn selected line into bold text in math mode.",
+      snippetType = "autosnippet",
+    },
+    fmta("\\mathbf{<>}", {
       d(1, get_visual),
     })
   ),
