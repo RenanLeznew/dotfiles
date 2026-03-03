@@ -272,6 +272,11 @@ return {
  \usepackage{accents}
  \usepackage[T1]{fontenc}
 
+
+ % Estilos minted
+ % \usemintedstyle{native, vim, fruity, monokai} % (precisa de fundo escuro)
+ % \usemintedstyle{emacs, manni, rrt, vs} % (precisa de fundo claro)
+
  \setcounter{section}{-1}
  \setlength{\parindent}{1.25cm}
  \setlength{\parskip}{0.2em}
