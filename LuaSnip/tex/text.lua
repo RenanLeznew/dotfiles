@@ -292,6 +292,9 @@ return {
  \pagestyle{fancy}
  \fancyhf{}
 
+\definecolor{dbg}{rgb}{0.1, 0.1, 0.1}
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
+
  \pgfplotsset{compat = 1.18}
 
  \hypersetup{
