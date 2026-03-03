@@ -67,9 +67,7 @@ return {
   --Italic
   s(
     {
-      trig = "(.)tii",
-      regTrig = TRUE,
-      wordTrig = FALSE,
+      trig = "tii",
       dscr = "Turn selected line in italic mode.",
       snippetType = "autosnippet",
     },
@@ -79,9 +77,7 @@ return {
   ),
   s(
     {
-      trig = "(.)mii",
-      regTrig = TRUE,
-      wordTrig = FALSE,
+      trig = "mii",
       dscr = "Turn selected line in italic mode.",
       snippetType = "autosnippet",
     },
@@ -93,9 +89,7 @@ return {
   --Bold face
   s(
     {
-      trig = "(.)tbf",
-      regTrig = TRUE,
-      wordTrig = FALSE,
+      trig = "tbf",
       dscr = "Turn selected line into bold text.",
       snippetType = "autosnippet",
     },
@@ -105,9 +99,7 @@ return {
   ),
   s(
     {
-      trig = "(.)mbf",
-      regTrig = TRUE,
-      wordTrig = FALSE,
+      trig = "mbf",
       dscr = "Turn selected line into bold text in math mode.",
       snippetType = "autosnippet",
     },
