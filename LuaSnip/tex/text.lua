@@ -275,7 +275,7 @@ return {
 
  % Estilos minted
  % \usemintedstyle{native, vim, fruity, monokai} % (precisa de fundo escuro)
- % \usemintedstyle{emacs, manni, rrt, vs} % (precisa de fundo claro)
+ % \usemintedstyle{emacs, manni, rrt, vs, colorful} % (precisa de fundo claro)
 
  \setcounter{section}{-1}
  \setlength{\parindent}{1.25cm}
