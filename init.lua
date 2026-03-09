@@ -1,4 +1,5 @@
 -- bootstrap lazy.nvim, LazyVim and your plugins
+vim.g.python3_host_prog = vim.fn.expand("~/.venvs/neovim/bin/python")
 require("config.lazy")
 
 require("plugins.LuaSnip")
@@ -86,5 +87,5 @@ setlocal spell
 set spelllang=pt_br
 set spellfile=~/.config/nvim/spell/pt.utf-8.add
 endif
-inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+inoremap <A-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 ]])

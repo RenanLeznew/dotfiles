@@ -4,6 +4,8 @@
 local discipline = require("craftzdog.discipline")
 discipline.cowboy()
 
+local quarto = require("quarto")
+local quarto_runner = require("quarto.runner")
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
@@ -76,3 +78,24 @@ end)
 keymap.set("n", "<leader>ts", ":PomodoroStart<CR>")
 keymap.set("n", "<leader>tb", ":PomodoroStop<CR>")
 keymap.set("n", "<leader>tu", ":PomodoroUI<CR>")
+
+-- Quarto
+quarto.setup()
+keymap.set("n", "<leader>qp", quarto.quartoPreview, { silent = true, noremap = true })
+keymap.set("n", "<leader>rc", quarto_runner.run_cell, { silent = true, noremap = true })
+keymap.set("n", "<leader>ra", quarto_runner.run_above, { silent = true, noremap = true })
+keymap.set("n", "<leader>rA", quarto_runner.run_all, { silent = true, noremap = true })
+keymap.set("n", "<leader>rl", quarto_runner.run_line, { silent = true, noremap = true })
+keymap.set("n", "<leader>r", quarto_runner.run_range, { silent = true, noremap = true })
+keymap.set("n", "<leader>RA", function()
+  quarto_runner.run_all(true)
+end, { silent = true, noremap = true })
+
+-- Molten
+keymap.set("n", "<localleader>mi", ":MoltenInit<CR>")
+keymap.set("n", "<localleader>e", ":MoltenEvaluateOperator<CR>")
+keymap.set("n", "<localleader>rr", ":MoltenReevaluateCell<CR>")
+keymap.set("v", "<localleader>rv", ":<C-u>MoltenEvaluateVisual<CR>gv")
+keymap.set("n", "<localleader>os", ":noautocmd MoltenEnterOutput<CR>")
+keymap.set("n", "<localleader>os", ":MoltenHideOutput<CR>")
+keymap.set("n", "<localleader>md", ":MoltenDelete<CR>")
