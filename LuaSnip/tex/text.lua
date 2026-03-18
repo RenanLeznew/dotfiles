@@ -680,6 +680,15 @@ Além disso, alguns textos em itálicos são clicáveis - normalmente, afim de f
     })
   ),
   s(
+    { trig = "(.)ev", regTrig = true, wordTrig = false },
+    fmta([[<>\mathrm{ev}_{<>}]], {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+      i(1),
+    })
+  ),
+  s(
     { trig = "(.)csh", regTrig = true, wordTrig = false },
     fmta([[<>\cosh^{<>}{<>}]], {
       f(function(_, snip)
