@@ -621,7 +621,7 @@ return {
   ),
 
   s(
-    { trig = "(.)bb%{", regTrig = true, wordTrig = false, autosnippet = true },
+    { trig = "(.)bbc", regTrig = true, wordTrig = false, autosnippet = true },
     fmta(
       [[
     <>\biggl\{<>\biggr\}
@@ -890,7 +890,7 @@ return {
     { trig = "(.)mint", regTrig = true, wordTrig = false },
     fmta(
       [[
-    \begin{minted}[bgcolor = <>, linenos=true]{<>}
+    \begin{minted}[bgcolor = <>, linenos=true, breakline]{<>}
     <>
     \end{minted}
     ]],
